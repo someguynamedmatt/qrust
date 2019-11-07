@@ -15,3 +15,31 @@ HOST=localhost$PORT
 GRAPHQL_SOURCE="http://$HOST/graphql"
 ```
 
+Get it going (assuming Rust is already at your fingertips):
+
+1) Get `psql` (Postgres) installed on your machine [by following these docs](https://www.postgresql.org/download/)
+1) Install the Diesel CLI: `cargo install diesel_cli`
+1) Make sure your `.env` file is ready to go as demonstrated above
+1) Run `diesel setup`
+1) Run `diesel migration run`
+1) Run `cargo build && cargo run`
+1) ...your server should now be running on whichever host/port you defined in `.env`
+1) Graphiql should be available at your `host:port/graphiql` (e.g. `localhost:8080/graphiql`)
+1) Add some fake posts, on `/graphiql` run the mutation:
+```
+mutation {
+  createPost(data: {title:"new post", body: "This is a new post"}) {
+    title
+    id
+  }
+}
+```
+1) Now you can query that same post:
+```
+query {
+  posts {
+    title
+  }
+}
+```
+
