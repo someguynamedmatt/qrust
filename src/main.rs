@@ -17,7 +17,7 @@ mod schemas;
 mod graphql;
 
 use crate::db::database::establish_connection;
-use crate::graphql::graphql::{create_schema, Context, Schema};
+use crate::graphql::roots::{create_schema, Context, Schema};
 
 fn graphiql() -> HttpResponse {
     let html = graphiql_source("http://localhost:8080/graphql");
