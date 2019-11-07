@@ -34,7 +34,7 @@ mutation {
   }
 }
 ```
-1) Now you can query that same post:
+...now you can query that same post:
 ```
 query {
   posts {
@@ -42,4 +42,8 @@ query {
   }
 }
 ```
+
+Congrats! You have a Rust/Graphql/Postgres server running!
+
+Explore the patterns, read the Diesel/GraphQL/Postgres documentation, and make something awesome.
 
