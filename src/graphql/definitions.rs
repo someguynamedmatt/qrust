@@ -1,14 +1,18 @@
 use crate::schemas::schemas::posts;
 use crate::schemas::schemas::people;
 
-#[derive(Queryable)]
+#[derive(Queryable, Identifiable, Associations)]
+#[belongs_to(Person)]
+#[table_name="posts"]
 pub struct Post {
     pub id: i32,
     pub title: String,
     pub body: String,
+    pub person_id: i32,
 }
 
-#[derive(Queryable)]
+#[derive(Queryable, Identifiable)]
+#[table_name="people"]
 pub struct Person {
     pub id: i32,
     pub first_name: String,
@@ -45,6 +49,10 @@ impl Post {
 
     pub fn body(&self) -> &str {
         self.body.as_str()
+    }
+
+    pub fn personId(&self) -> i32 {
+        self.person_id
     }
 }
 

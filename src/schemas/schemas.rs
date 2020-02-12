@@ -3,6 +3,7 @@ table! {
         id -> Int4,
         title -> Varchar,
         body -> Varchar,
+        person_id -> Int4,
     }
 }
 

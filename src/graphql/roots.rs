@@ -33,6 +33,16 @@ impl QueryRoot {
             .load::<Person>(&connection)
             .expect("[ERROR]: loading people")
     }
+
+    fn postWithPerson(context: &Context) -> Post {
+        use crate::schemas::schemas::people::dsl::*;
+        let connection = context.db.get().unwrap();
+        let p = people
+            .limit(100)
+            .load::<Person>(&connection)
+            .expect("[ERROR]: loading people");
+        Post::belonging_to(&p).first(&connection).expect("OOPS")
+    }
 }
 
 pub struct MutationRoot;
