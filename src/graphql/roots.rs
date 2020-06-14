@@ -2,7 +2,7 @@ use diesel::prelude::*;
 use juniper::RootNode;
 
 use crate::db::database::PostgresPool;
-use crate::schemas::schemas::posts;
+use crate::schema::posts;
 use super::definitions::{NewPost, Post};
 
 #[derive(Clone)]
@@ -17,7 +17,7 @@ pub struct QueryRoot;
 #[juniper::object(Context = Context)]
 impl QueryRoot {
     fn posts(context: &Context) -> Vec<Post> {
-        use crate::schemas::schemas::posts::dsl::*;
+        use crate::schema::posts::dsl::*;
         let connection = context.db.get().unwrap();
         posts
             .limit(100)

@@ -12,7 +12,7 @@ use actix_web::{web, App, HttpServer};
 use dotenv::dotenv;
 
 mod db;
-mod schemas;
+mod schema;
 mod graphql;
 mod resources;
 
